@@ -1,6 +1,5 @@
 # Unsupervised Learning for Cuboid Shape Abstraction via Joint Segmentation from Point Clouds
 
-![Overview](./images/teaser3.png)
 This repository is a PyTorch implementation for paper:
 [Unsupervised Learning for Cuboid Shape Abstraction via Joint Segmentation from Point Clouds](https://arxiv.org/abs/2106.03437). 
 <br>
@@ -30,3 +29,4 @@ Coming soon...
 
 ## Cite
 Please cite our work if you find it useful:
+

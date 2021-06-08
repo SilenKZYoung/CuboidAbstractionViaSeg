@@ -28,3 +28,7 @@ Coming soon...
 
 ## Cite
 Please cite our work if you find it useful:
+
+
+## License
+MIT License

@@ -27,7 +27,9 @@ Coming soon...
 Coming soon...
 
 ## Training
+```
 python E_train.py --E_shapenet4096 PATH_TO_SHAPENET4096 --E_shapenetpart PATH_TO_SHAPENETPART --E_ckpts_folder PATH_TO_SAVE --D_dataset shapenet4096 --D_datatype table
+```
 
 ## Cite
 Please cite our work if you find it useful:

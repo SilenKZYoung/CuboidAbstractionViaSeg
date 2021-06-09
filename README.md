@@ -38,7 +38,16 @@ python E_infer.py --E_shapenet4096 PATH_TO_SHAPENET4096 --E_shapenetpart PATH_TO
 
 ## Cite
 Please cite our work if you find it useful:
-
+```
+@misc{yang2021unsupervised,
+    title={Unsupervised Learning for Cuboid Shape Abstraction via Joint Segmentation from Point Clouds},
+    author={Kaizhi Yang and Xuejin Chen},
+    year={2021},
+    eprint={2106.03437},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
+}
+```
 
 ## License
 MIT License

@@ -31,6 +31,11 @@ Coming soon...
 python E_train.py --E_shapenet4096 PATH_TO_SHAPENET4096 --E_shapenetpart PATH_TO_SHAPENETPART --E_ckpts_folder PATH_TO_SAVE --D_dataset shapenet4096 --D_datatype table
 ```
 
+## Inference
+```
+python E_infer.py --E_shapenet4096 PATH_TO_SHAPENET4096 --E_shapenetpart PATH_TO_SHAPENETPART --experiment_path DIRECTORY_TO_CHECKPOINT --checkpoint CHECKPOINT_NAME
+```
+
 ## Cite
 Please cite our work if you find it useful:
 

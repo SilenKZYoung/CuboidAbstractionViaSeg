@@ -21,16 +21,17 @@ Representing complex 3D objects as simple geometric primitives, known as shape a
 * TensorboardX for visualization of the training process.
 
 ## Dataset
+We provide the ready-to-use datasets:
 >[Dataset](https://drive.google.com/file/d/18ngs7hefXOptpuEHrLzeTUCT0Vn1Ou4l/view?usp=sharing)
 
 ## Training
 ```
-python E_train.py --E_shapenet4096 PATH_TO_SHAPENET4096 --E_shapenetpart PATH_TO_SHAPENETPART --E_ckpts_folder PATH_TO_SAVE --D_dataset shapenet4096 --D_datatype table
+python E_train.py --E_shapenet4096 PATH_TO_SHAPENET4096 --E_ckpts_folder PATH_TO_SAVE --D_datatype DATA_TYPE
 ```
 
 ## Inference
 ```
-python E_infer.py --E_shapenet4096 PATH_TO_SHAPENET4096 --E_shapenetpart PATH_TO_SHAPENETPART --experiment_path DIRECTORY_TO_CHECKPOINT --checkpoint CHECKPOINT_NAME
+python E_infer.py --E_shapenet4096 PATH_TO_SHAPENET4096 --E_ckpt_path DIRECTORY_TO_CHECKPOINT --checkpoint CHECKPOINT_NAME
 ```
 
 ## Cite

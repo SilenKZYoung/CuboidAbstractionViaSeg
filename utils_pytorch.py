@@ -159,7 +159,7 @@ def visualize_cubes(vertices, faces, color, save_path, bias, pred, names):
 
 
 def visualize_cubes_masked(vertices, faces, color, assign_matrix, save_path, bias, pred, names):
-    threhold = 20
+    threhold = 24
     batch_size = assign_matrix.shape[0]
     num_cuboids = assign_matrix.shape[2]
     vertices = vertices.cpu().numpy()

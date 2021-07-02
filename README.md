@@ -26,6 +26,10 @@ We provide the ready-to-use datasets:
 
 Please unzip this file and set its path as the argument ```E_shapenet4096```.
 
+## Pretrain models
+>[Pretrain models](https://drive.google.com/file/d/1JQ0PC4cvHm_vELQbik1v9pErTVg9nxG6/view?usp=sharing)
+
+
 ## Training
 ```
 python E_train.py --E_shapenet4096 PATH_TO_SHAPENET4096 --E_ckpts_folder PATH_TO_SAVE --D_datatype DATA_TYPE

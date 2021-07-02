@@ -42,28 +42,31 @@ def main(args):
     print('Load model successfully: %s' % (args.E_ckpt_path + '/' + args.checkpoint))
 
     color = utils_pt.generate_ncolors(hypara['N']['N_num_cubes'])
+
+    hypara['E'] = {}
     hypara['E']['E_shapenet4096'] = args.E_shapenet4096
 
     # Create Dataset
+    batch_size = 32
     if args.infer_test:
         cur_dataset = shapenet4096('test', hypara['E']['E_shapenet4096'], hypara['D']['D_datatype'], True)
         cur_dataloader = DataLoader(cur_dataset, 
-                                    batch_size = hypara['L']['L_batch_size'],
+                                    batch_size = batch_size,
                                     shuffle=False, 
-                                    num_workers=int(hypara['E']['E_workers']), 
+                                    num_workers=4, 
                                     pin_memory=True)
-        infer(args, cur_dataloader, Network, hypara, 'test', color)
+        infer(args, cur_dataloader, Network, hypara, 'test',batch_size, color)
     if args.infer_train:
         cur_dataset = shapenet4096('train', hypara['E']['E_shapenet4096'], hypara['D']['D_datatype'], True)
         cur_dataloader = DataLoader(cur_dataset, 
-                                    batch_size = hypara['L']['L_batch_size'],
+                                    batch_size = batch_size,
                                     shuffle=False, 
-                                    num_workers=int(hypara['E']['E_workers']), 
+                                    num_workers=4, 
                                     pin_memory=True)
-        infer(args, cur_dataloader, Network, hypara, 'train', color)
+        infer(args, cur_dataloader, Network, hypara, 'train', batch_size, color)
 
 
-def infer(args, cur_dataloader, Network, hypara, train_val_test, color):
+def infer(args, cur_dataloader, Network, hypara, train_val_test, batch_size, color):
     save_path = args.E_ckpt_path + '/infer/' + train_val_test + '/'
     if not os.path.exists(save_path): 
         os.makedirs(save_path)
@@ -73,11 +76,11 @@ def infer(args, cur_dataloader, Network, hypara, train_val_test, color):
             points, normals = points.cuda(), normals.cuda()
             outdict = Network(pc = points)
 
-            vertices, faces = utils_pt.generate_cube_mesh_batch(outdict['verts_forward'], outdict['cube_face'], hypara['L']['L_batch_size'])
+            vertices, faces = utils_pt.generate_cube_mesh_batch(outdict['verts_forward'], outdict['cube_face'], batch_size)
             utils_pt.visualize_segmentation(points, color, outdict['assign_matrix'], save_path, _, names)
             utils_pt.visualize_cubes(vertices, faces, color, save_path, _, '', names)
             utils_pt.visualize_cubes_masked(vertices, faces, color, outdict['assign_matrix'], save_path, _, '', names)
-            vertices_pred, faces_pred = utils_pt.generate_cube_mesh_batch(outdict['verts_predict'], outdict['cube_face'], hypara['L']['L_batch_size'])
+            vertices_pred, faces_pred = utils_pt.generate_cube_mesh_batch(outdict['verts_predict'], outdict['cube_face'], batch_size)
             utils_pt.visualize_cubes(vertices_pred, faces_pred, color, save_path, _, 'pred', names)
             utils_pt.visualize_cubes_masked(vertices_pred, faces_pred, color, outdict['assign_matrix'], save_path, _, 'pred', names)
             utils_pt.visualize_cubes_masked_pred(vertices_pred, faces_pred, color, outdict['exist'], save_path, _, names)
